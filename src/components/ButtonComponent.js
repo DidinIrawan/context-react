@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import ThemeContext from "../context/ThemeContext";
+import {ThemeContext} from "../context/ThemeContext";
 
 class ButtonComponent extends Component {
     render() {
-        console.log(this.context);
+        const {theme, toggleTheme}=this.context
         return (
             <div>
                 <button
                     style={{
                         height: 50,
                         width: 80,
-                        backgroundColor: this.context === "dark" ? "#121212" : "#ffffff",
-                        color: this.context !== "dark" ? "#121212" : "#ffffff",
+                        ...theme
                     }}
+                onClick={toggleTheme}
                 >
                     Button
                 </button>

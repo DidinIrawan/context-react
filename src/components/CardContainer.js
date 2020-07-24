@@ -1,20 +1,28 @@
 import React, {Component} from 'react';
 import CardComponent from "./CardComponent";
-import ThemeContext from "../context/ThemeContext";
+import { ThemeContext, themes } from "../context/ThemeContext";
 
 class CardContainer extends Component {
     constructor(props) {
         super(props)
-        this.state = {
 
+        this.toggleTheme=()=>{
+            this.setState({
+                theme: this.state.theme ===themes.dark
+                    ? themes.light
+                    :themes.dark
+            })
+        }
+        this.state = {
+            theme:themes.light,
+            toggleTheme: this.toggleTheme,
         }
     }
 
     render() {
         return (
             <div>
-                <br /><br /><br />
-                <ThemeContext.Provider value ={"dark"}>
+                <ThemeContext.Provider value ={this.state}>
                     <CardComponent />
                 </ThemeContext.Provider>
             </div>

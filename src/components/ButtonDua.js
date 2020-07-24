@@ -1,22 +1,27 @@
 import React from "react";
-import ThemeContext from "../context/ThemeContext";
+import {ThemeContext} from "../context/ThemeContext";
 
 const ButtonDua = () => {
     return (
         <div>
             <ThemeContext.Consumer>
-                {(value) => {
+                {({theme,toggleTheme}) => {
                     return (
+                        <>
+                            <div style={{ ...theme,height:100}}>
+                                <h1 style={{ ...theme}}>Belajar Context Dinamis</h1>
+                            </div>
                         <button
                             style={{
                                 height: 50,
                                 width: 80,
-                                backgroundColor: value === "dark" ? "blue" : "white",
-                                color: value !== "dark" ? "#121212" : "skyblue",
+                               ...theme
                             }}
+                            onClick={toggleTheme}
                         >
-                            Button Dua
+                            GANTI TEMA
                         </button>
+                        </>
                     );
                 }}
             </ThemeContext.Consumer>
